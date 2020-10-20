@@ -1,0 +1,47 @@
+<div class="container" >
+    <h1>Registrar libro</h1>
+
+    <form [formGroup]="createBookForm" (ngSubmit)="saveBook()" >
+
+        <div class="form-row" >
+            <div class="form-group col-md-6" >
+                <label for="name">Nombre del libro</label>
+                <input formControlName="name" type="text" class="form-control" id="name" >
+            </div>
+            <div class="form-group col-md-6" >
+                <label for="author">Nombre del autor</label>
+                <input formControlName="author" type="text" class="form-control" id="author" >
+            </div>
+        </div>
+
+        <div class="form-row" >
+            <div class="form-group col-md-6" >
+                <label for="numberPages">Número de páginas</label>
+                <input  formControlName="numberPages" type="number" class="form-control" id="numberPages" >
+            </div>
+            <div class="form-group col-md-6" >
+                <label for="publsher">Editoríal</label>
+                <input  formControlName="publsher" type="text" class="form-control" id="publsher" >
+            </div>
+        </div>
+
+        <div class="form-row" >
+            <div class="form-group col-md-6" >
+                <label for="genre">Generos</label>
+                <input formControlName="genre" type="hidden" id="genre" class="form-control" >
+                <div *ngFor="let i of allGenres" >
+                    <input type="checkbox" value="{{i._id}}" (click)="saveGenre($event)"  >
+                    <label>{{i.name}}</label>
+                </div>
+                <!--<div  >
+                    <select formControlName="genre" id="genre">
+                        <option *ngFor="let i of allGenres" value="{{i._id}}" >{{i.name}}</option>
+                    </select>
+                </div>-->
+            </div>
+        </div>
+
+        <button class="btn btn-success" > Registrar </button>
+    </form>
+
+</div>
